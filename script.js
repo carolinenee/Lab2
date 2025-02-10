@@ -2,38 +2,59 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY2Fyb2xpbmVuZWUiLCJhIjoiY201b2RhZmxtMGthajJuc
 const map = new mapboxgl.Map({
     container: 'my-map', // map container ID
     style: 'mapbox://styles/carolinenee/cm6zbbxvf000n01qwgyu3elks', // style URL
-    center: [-79.3832, 43.7], // starting position [lng, lat]
-    zoom: 11, // starting zoom level
+    center: [-79.392221, 43.655417], // starting position [lng, lat]
+    zoom: 18, // starting zoom level
 });
+// adding polygon location to map 
 map.on('load', () => {
-    // Add a data source containing GeoJSON data
-   // map.addSource('buildings-data', {
-   //     type: 'geojson',
-   //     data: 'https://raw.githubusercontent.com/carolinenee/Lab2/refs/heads/main/wk5-data/buildings.geojson' // Your URL to your buildings.geojson file
-   // });
-    // Add a data source from a Mapbox tileset
-    map.addSource('census-tracts', { // Create your own source ID
-        'type': 'vector',
-        'url': 'mapbox://carolinenee.8esaocaa' // Update to your mapbox tileset ID
+    // feature collection was copy pasted directly from geojson.io 
+    map.addSource('MoozdaHome', {
+        type: 'geojson',
+        data: {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "properties": {},
+                    "geometry": {
+                        "coordinates": [
+                            [
+                                [
+                                    -79.39246519246132,
+                                    43.65546778219394
+                                ],
+                                [
+                                    -79.39252158937886,
+                                    43.65545639520022
+                                ],
+                                [
+                                    -79.39245338845492,
+                                    43.65529697706148
+                                ],
+                                [
+                                    -79.39240486087475,
+                                    43.65530741516662
+                                ],
+                                [
+                                    -79.39246519246132,
+                                    43.65546778219394
+                                ]
+                            ]
+                        ],
+                        "type": "Polygon"
+                    }
+                }
+            ]
+        }
     });
+    //style for the MoozdaHome polygon
     map.addLayer({
-        'id': 'idkbro', // Create your own layer ID
-        'type': 'fill', // Note this is different to point data
-        'source': 'census-tracts', // Must match source ID from addSource Method
+        'id': 'uoft-pnt',
+        'type': 'fill',
+        'source': 'MoozdaHome', //needs to be same name as in map.addSource
         'paint': {
-            'fill-color': '#888888', // Test alternative colours and style properties
-            'fill-opacity': 0.4,
-            'fill-outline-color': 'black'
-        },
-        'source-layer': 'torontoct-bjj60w' // Tileset NAME (diff to ID), get this from mapbox tileset page
+            "fill-color": "#FEA3AA", // Red color fill
+            "fill-opacity": 0.6 // 60% transparenc
+        }
     });
-    //map.addLayer({
-        //'id': 'buildings-point',
-        //'type': 'circle',
-        //'source': 'buildings-data',
-        //'paint': {
-            //'circle-radius': 5,
-            //'circle-color': '#007cbf'
-        //}
-    //});
 });
