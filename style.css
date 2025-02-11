@@ -1,6 +1,33 @@
 .map-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
+    position: relative;
+    width: 80%; /*makes map take up 80% of page*/
+    max-width: 800px; /* Ensures it doesn't get too wide */
+    height: 600px; 
+    margin: 20px auto; /* Centers it horizontally */
+    border: 8px solid black; /*makes a border around the map*/
+}
+.pet-circle { /*creates the pink circle symbol to use in HTML code for the legend*/
+    background-color: deeppink;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.bike-circle{ /*creates the black circle symbol to use in HTML code for the legend*/
+    background-color: black;
+    width: 8px;
+    height: 8px;
+    opacity: 70%;
+    border-radius: 50%;
+}
+.moos-house{ /*creates the rectangle symbol to use in HTML code for the legend*/
+    background-color: lightpink;
+    width: 15px;
+    height: 40px;
+    opacity: 80%;
+
+}
+.background{ /*sets the style for the background box used for the legend*/
+    background-color: #e9e1e2; 
+    width: 250px;
+    padding-left: 10px;
 }
